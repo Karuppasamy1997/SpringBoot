@@ -1,11 +1,15 @@
 package com.lo.demoap.ExampleApplication;
 
 import java.io.File;
+
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -16,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lo.demoap.ExampleTwo.StarterSep;
+
+
+
 
 @RestController
 @RequestMapping("test")
@@ -61,14 +68,14 @@ public class StarterDep {
 		return new ResponseEntity<>(output, HttpStatus.OK);
 
 	}
-/*
-	@RequestMapping(value = "load", method = RequestMethod.GET)
+
+	@RequestMapping(value = "ex", method = RequestMethod.GET)
 	public ResponseEntity<?> loadProperty(@RequestParam Map<String, String> requestParam) throws Exception {
 		System.out.println("inside load");
 		Properties prop = new Properties();	
 
 		prop.put("Id", "101");
-		prop.put("Name", "Joy");
+		prop.put("Name", "mani");
 		prop.put("Designation", "Software Developer");
 
 		FileOutputStream out = new FileOutputStream("D:\\karuppu.properties");
@@ -86,15 +93,22 @@ public class StarterDep {
 		}
 		
 		return new ResponseEntity<>(prop , HttpStatus.OK);
-	}*/
+	}
 	 
-	@RequestMapping(value = "load1", method = RequestMethod.GET)
+	@RequestMapping(value = "load", method = RequestMethod.GET)
 	public ResponseEntity<?> pro(@RequestParam Map<String, String> requestParam) throws Exception {
+		Logger log = LogManager.getLogger("demoap");
+		Properties propa = new Properties();
+		
 		File config=new File(path);
-		Properties propa = new Properties();	
+			
 		FileOutputStream in=new FileOutputStream(config);
 		propa.setProperty("department","cse");
+		propa.setProperty("value", "two");
 		propa.store(in, "write a file");
+		
+		log.debug("testAPI started: " + propa);
+		log.info("testAPI started: " + propa);
 		
 		return new ResponseEntity<>(propa,HttpStatus.OK);
 		
@@ -109,4 +123,5 @@ public class StarterDep {
 		
 		return new ResponseEntity<>(propa,HttpStatus.OK);
 }*/
+	
 }

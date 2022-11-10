@@ -11,19 +11,19 @@ public class StarterSep {
 	 }
 
 	public int sub(int a, int b) {
-		// TODO Auto-generated method stub
+		
 		 int x=a-b;
 		 return x;
 	}
 
 	public int mul(int a, int b) {
-		// TODO Auto-generated method stub
+		
 		 int y=a*b;
 		 return y;
 	}
 
 	public int div(int a, int b) {
-		// TODO Auto-generated method stub
+		
 		 int z=a/b;
 		 return z;
 	}

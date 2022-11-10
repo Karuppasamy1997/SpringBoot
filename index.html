@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" lang="javascript">
+			$(document).ready(function()
+			{
+				$("#Login").click(function()
+				{
+					var output="uName="+$("#User").val()+"&uPass="+$("#Pass").val();
+					alert(output);
+					$.ajax({  
+						type: "GET",
+						url: "http://localhost:8080/demoap/loadhtml/htmlstart?" + output ,  		  
+						success: function(data) {
+							alert(JSON.stringify(data)); 
+						}  
+					});  
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Welcome page</h1>
+			Enter the user Name:<input type="test" id="User"/>
+			<br><br>
+			Enter the user Password: <input type="test" id="Pass"/>
+			<br><br>
+			<input type="button" id="Login" value="Login"/>
+	</body>
+</html>
